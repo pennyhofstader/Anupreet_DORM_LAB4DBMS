@@ -198,9 +198,9 @@ BEGIN
 select sp.supp_id as Supplier_Id,supp_name as Supplier_Name, RAT_RATSTARS as Rating, case
 	when RAT_RATSTARS=5 
 		then 'Excellent Service'
-	when RAT_RATSTARS>4 
+	when avg(RAT_RATSTARS)>4 
 		then 'Good Service'
-	when RAT_RATSTARS>2 
+	when avg(RAT_RATSTARS)>2 
 		then 'Average Service'
 	else 'Poor Service' 
 		end as Type_of_Service  
@@ -212,8 +212,6 @@ END //
 DELIMITER ;
 
 call supplierRatings();
-
-
 
 
 
